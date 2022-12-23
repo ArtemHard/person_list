@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import "./App.css";
 import { Button } from "./components/Button";
+import { Card } from "./components/Card";
 import { LeftBlock } from "./components/LeftBlock";
 import { RightBlock } from "./components/RightBlock";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
@@ -50,6 +51,7 @@ function App() {
           <HeaderWrapper>
             <RightTitle>Список пользователей</RightTitle>
           </HeaderWrapper>
+          <Card />
         </RightBlock>
       </main>
     </>
