@@ -12,3 +12,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  /* typography */
+  --family: 'Roboto', sans-serif;
+  --colors-text:hsla(0, 0%, 0%, 1);
+  --fs-s: 11px;
+  --fs-m: 12px;
+  --fs-h: 14px;
+  --fw-normal: 400;
+  --fw-bold: 700;
+
+
+  /* other */
+
+  --radii: 5px;
+  --rad-b: 8px;
+
+  /*background */
+  --colors-bg-h: hsla(0, 0%, 74%, 1);
+  --colors-bg-m: hsla(0, 0%, 95%, 1);
+  --colors-bg-s: #FFFFFF;
+}
+
+
+body {
+  margin: 0;
+  font-family: var(--family);
+  color: var(--colors-text);
+  font-weight: var(--fw-normal);
+  background-color: var(--colors-bg-s);
+}
