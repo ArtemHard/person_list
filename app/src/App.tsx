@@ -35,6 +35,8 @@ const RightTitle = styled.h1`
 function App() {
   const { data, error, isLoading } = useGetUsersQuery();
   const persons = useAppSelector((state) => state.persons);
+  console.log(persons);
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     if (data) dispatch(addUsers(data));
@@ -51,7 +53,9 @@ function App() {
           <HeaderWrapper>
             <RightTitle>Список пользователей</RightTitle>
           </HeaderWrapper>
-          <Card />
+          {persons.map((person) => (
+            <Card key={person.id} {...person} />
+          ))}
         </RightBlock>
       </main>
     </>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { User } from "../redux/reducers/types/personsTypes";
 
 const CardWrapper = styled.div`
   background-color: var(--colors-bg-m);
@@ -16,7 +17,7 @@ const CardWrapper = styled.div`
 
 const InfoLeftContainer = styled.div`
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   justify-content: space-between;
   padding: 1.5%;
   /* align-items: flex-end; */
@@ -64,21 +65,25 @@ const Details = styled.span`
   color: #4b51ef;
 `;
 
-export const Card = () => {
+export const Card = ({ ...props }: User) => {
+  const { id, name, username, phone, company, address } = props;
   return (
     <CardWrapper>
       <InfoLeftContainer>
         <InfoWrapper>
-          <InfoArticle>ФИО: </InfoArticle>
-          <InfoData> ВАСЯ ИВАНОВ</InfoData>
+          <InfoArticle>Имя: </InfoArticle>
+          <InfoData>
+            {" "}
+            {name} {username}
+          </InfoData>
         </InfoWrapper>
         <InfoWrapper>
-          <InfoArticle>ФИО: </InfoArticle>
-          <InfoData> ВАСЯ ИВАНОВ</InfoData>
+          <InfoArticle>город: </InfoArticle>
+          <InfoData> {address.city}</InfoData>
         </InfoWrapper>
         <InfoWrapper>
-          <InfoArticle>ФИО: </InfoArticle>
-          <InfoData> ВАСЯ ИВАНОВ</InfoData>
+          <InfoArticle>компания: </InfoArticle>
+          <InfoData> {company.name}</InfoData>
         </InfoWrapper>
       </InfoLeftContainer>
       <InfoRightContainer>
