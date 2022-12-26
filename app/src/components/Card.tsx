@@ -66,7 +66,7 @@ const Details = styled.span`
 `;
 
 export const Card = ({ ...props }: User) => {
-  const { id, name, username, phone, company, address } = props;
+  const { id, name, username, company, address } = props;
   return (
     <CardWrapper>
       <InfoLeftContainer>
