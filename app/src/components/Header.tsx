@@ -33,15 +33,13 @@ type HeaderWrapperProps = {
 };
 
 export const Header = ({ textBtn, titleText }: HeaderPropsType) => {
-  // const { isLoading } = useGetUsersQuery();
-  const isLoading = true;
+  const { isLoading } = useGetUsersQuery();
 
   return (
     <HeaderWrapper isBtn={!!textBtn}>
       <RightTitle>{titleText || "Список пользователей"}</RightTitle>
       {!!textBtn && (
         <Button color='white' isLoading={isLoading}>
-          <Loader isLoading={isLoading} isBtn={true} />
           {isLoading ? "" : textBtn}
         </Button>
       )}
