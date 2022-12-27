@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
   width: 35%;
   min-width: 150px;
   padding: 2%;
+  height: auto;
 `;
 
 const LeftTitle = styled.h2`
@@ -29,12 +30,21 @@ const LeftTitle = styled.h2`
   line-height: 28px;
 `;
 
+const FixedWrapper = styled.div`
+  position: sticky;
+  top: 4%;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const LeftBlock = () => {
   return (
     <Wrapper>
-      <LeftTitle>Сортировка</LeftTitle>
-      <Button color='white'>По городу</Button>
-      <Button color='white'>По компаниям</Button>
+      <FixedWrapper>
+        <LeftTitle>Сортировка</LeftTitle>
+        <Button color='white'>По городу</Button>
+        <Button color='white'>По компаниям</Button>
+      </FixedWrapper>
     </Wrapper>
   );
 };

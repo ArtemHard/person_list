@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { Button } from "./Button";
 
-const HeaderWrapper = styled.div<HeaderPropsType>`
-  /* margin: 2%; */
+const HeaderWrapper = styled.div<HeaderWrapperProps>`
+  padding: 2% 4%;
   display: flex;
+  width: 100%;
   justify-content: ${(props) => {
-    if (!!props.textBtn) {
+    if (!!props.isBtn) {
       return "space-between";
-    } else return "space-between";
+    } else return "space-around";
     //
   }};
   align-items: center;
@@ -22,15 +23,17 @@ const RightTitle = styled.h1`
 
 type HeaderPropsType = {
   textBtn?: string;
+  titleText?: string;
 };
 
-export const Header = ({ textBtn }: HeaderPropsType) => {
-  //   console.log(!!textBtn);
+type HeaderWrapperProps = {
+  isBtn?: boolean;
+};
 
+export const Header = ({ textBtn, titleText }: HeaderPropsType) => {
   return (
-    // textBtn={textBtn}
-    <HeaderWrapper>
-      <RightTitle>Список пользователей</RightTitle>
+    <HeaderWrapper isBtn={!!textBtn}>
+      <RightTitle>{titleText || "Список пользователей"}</RightTitle>
       {!!textBtn && <Button>{textBtn}</Button>}
     </HeaderWrapper>
   );

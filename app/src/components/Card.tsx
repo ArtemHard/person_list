@@ -6,7 +6,10 @@ import { User } from "../redux/reducers/types/personsTypes";
 const CardWrapper = styled.div`
   background-color: var(--colors-bg-m);
   width: 100%;
-  width: 560px; // FIT CONTENT
+  margin: 1%;
+  padding: 1%;
+  max-width: 560px; // FIT CONTENT */
+  /* max-width: 560px; */
   height: 100px;
   display: flex;
   /* flex-wrap: nowrap; */
