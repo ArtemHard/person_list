@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { useGetUsersQuery } from "../redux/api/usersApi";
 import { Button } from "./Button";
+import Loader from "./Loader";
 
 const HeaderWrapper = styled.div<HeaderWrapperProps>`
   padding: 2% 4%;
@@ -31,10 +33,18 @@ type HeaderWrapperProps = {
 };
 
 export const Header = ({ textBtn, titleText }: HeaderPropsType) => {
+  // const { isLoading } = useGetUsersQuery();
+  const isLoading = true;
+
   return (
     <HeaderWrapper isBtn={!!textBtn}>
       <RightTitle>{titleText || "Список пользователей"}</RightTitle>
-      {!!textBtn && <Button>{textBtn}</Button>}
+      {!!textBtn && (
+        <Button color='white' isLoading={isLoading}>
+          <Loader isLoading={isLoading} isBtn={true} />
+          {isLoading ? "" : textBtn}
+        </Button>
+      )}
     </HeaderWrapper>
   );
 };

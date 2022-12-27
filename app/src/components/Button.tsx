@@ -23,6 +23,8 @@ export const Button = styled.button.attrs<InputColorType>((props) => ({
   border: none;
   margin: 5px;
   width: fit-content;
+  /* width: 150px; */
+  min-width: 150px;
   padding: 20px;
   display: flex;
   align-items: center;

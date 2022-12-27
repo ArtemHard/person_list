@@ -14,11 +14,11 @@ export const Wrapper = styled.div`
   background: var(--colors-bg-h);
   display: flex;
   flex-direction: column;
-  /* padding: 1.2rem; */
   justify-content: flex-start;
   width: 35%;
   min-width: 150px;
   padding: 2%;
+  min-height: 100vh;
   height: auto;
 `;
 

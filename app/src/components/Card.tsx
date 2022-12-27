@@ -6,14 +6,11 @@ import { User } from "../redux/reducers/types/personsTypes";
 const CardWrapper = styled.div`
   background-color: var(--colors-bg-m);
   width: 100%;
-  margin: 1%;
-  padding: 1%;
+  margin-bottom: 1rem;
+  padding: 1% 0;
   max-width: 560px; // FIT CONTENT */
-  /* max-width: 560px; */
   height: 100px;
   display: flex;
-  /* flex-wrap: nowrap; */
-  /* align-items: center; */
   justify-content: space-between;
   border-radius: var(--rad-b);
 `;
@@ -23,19 +20,15 @@ const InfoLeftContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5%;
-  /* align-items: flex-end; */
 `;
 
 const InfoRightContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
   padding: 1.5%;
-  /* justify-content: flex-end; */
 `;
 
-const InfoWrapper = styled.div`
-  /* padding-bottom: 5%; */
-`;
+const InfoWrapper = styled.div``;
 
 const InfoArticle = styled.span`
   font-family: var(--family);
@@ -43,7 +36,6 @@ const InfoArticle = styled.span`
   font-weight: var(--fw-normal);
   font-size: var(--fs-h);
   line-height: 13px;
-  /* identical to box height */
 
   color: #a3a3a3;
 `;
@@ -54,7 +46,6 @@ const InfoData = styled.span`
   font-weight: var(--fw-normal);
   font-size: var(--fs-h);
   line-height: 13px;
-  /* identical to box height */
 
   color: var(--color-text);
 `;
