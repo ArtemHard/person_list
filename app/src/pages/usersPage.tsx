@@ -17,7 +17,7 @@ export const UsersPage = () => {
 
   return (
     <>
-      <Header textBtn='Редактировать' />
+      <Header />
       {persons.map((person) => (
         <Card key={person.id} {...person} />
       ))}
