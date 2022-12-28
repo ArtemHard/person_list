@@ -12,7 +12,6 @@ const FormWrapper = styled.div`
 
 const Form = styled.form.attrs({
   autocomplete: "off",
-  name: "profile",
 })`
   display: flex;
   flex-direction: column;
@@ -47,7 +46,8 @@ const Input = styled.input.attrs<InputType>((props) => ({
   disabled: disabledInput(props),
 }))<InputType>`
   width: 211px;
-  height: 22px;
+  height: 30px;
+  padding: 1%;
   margin: 2%;
   color: ${(props) => {
     if (!!ColorInputIsDisabled(disabledInput(props))) {
@@ -59,6 +59,24 @@ const Input = styled.input.attrs<InputType>((props) => ({
   background: #ffffff;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
+
+  :focus ~ .label,  /* фокус на input */
+:not(:placeholder-shown) ~ .label  /* в input есть значение */ {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+  }
+
+  :not(:placeholder-shown) ~ .label {
+    color: #808097; /* сероватый */
+  }
+  :focus ~ .label {
+    color: #dc2f55; /* красный, фокус в поле */
+  }
+`;
+// https://xhtml.ru/2021/html/how-to-create-fancy-jumping-text-input-labels/
+const Label = styled.label.attrs({
+  className: "label",
+})`
+  transition: transform 200ms, color 200ms;
 `;
 
 type InputType = {
@@ -68,15 +86,23 @@ type InputType = {
 };
 
 export const ProfilePage = () => {
-  const [isDisabled, setIsDisabled] = useState(true);
   return (
     <>
       <Header textBtn='Редактировать' titleText='Профиль пользователя' />
       <FormWrapper>
-        <Form>
-          <Input value='asdf' />
+        <Form name='profile' id='profile'>
+          <Input
+            form='profile'
+            id='test'
+            name='text'
+            // value='asdf'
+            placeholder=' '
+            type='text'
+          />
+          <Label>Введите тестовый текст</Label>
+
           <Input />
-          <Input disabled={isDisabled} />
+          <Input disabled={true} />
         </Form>
       </FormWrapper>
     </>
