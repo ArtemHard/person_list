@@ -74,7 +74,7 @@ export const ProfilePage = () => {
       <Header textBtn='Редактировать' titleText='Профиль пользователя' />
       <FormWrapper>
         <Form>
-          <Input disabled={isDisabled} />
+          <Input value='asdf' />
           <Input />
           <Input disabled={isDisabled} />
         </Form>
