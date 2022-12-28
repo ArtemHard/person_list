@@ -36,12 +36,26 @@ const disabledInput = (props: InputType): boolean => {
   } else return false;
 };
 
+type ColorInputIsDisabledType = "#d8d8d8" | null;
+const ColorInputIsDisabled = (data: boolean): ColorInputIsDisabledType => {
+  if (data) {
+    return "#d8d8d8";
+  } else return null;
+};
+
 const Input = styled.input.attrs<InputType>((props) => ({
   disabled: disabledInput(props),
 }))<InputType>`
   width: 211px;
   height: 22px;
   margin: 2%;
+  color: ${(props) => {
+    if (!!ColorInputIsDisabled(disabledInput(props))) {
+      return ColorInputIsDisabled(disabledInput(props));
+    } else return "inherit";
+  }};
+  // TEST NEDD
+  //  ColorInputIsDisabled(disabledInput(props))
   background: #ffffff;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
