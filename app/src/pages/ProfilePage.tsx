@@ -42,13 +42,19 @@ const ColorInputIsDisabled = (data: boolean): ColorInputIsDisabledType => {
   } else return null;
 };
 
+type InputType = {
+  disabled?: boolean;
+  value?: string;
+  isLoading?: boolean;
+};
 const Input = styled.input.attrs<InputType>((props) => ({
   disabled: disabledInput(props),
+  className: 'form-control'
 }))<InputType>`
   width: 211px;
   height: 30px;
-  padding: 1%;
-  margin: 2%;
+  
+  
   color: ${(props) => {
     if (!!ColorInputIsDisabled(disabledInput(props))) {
       return ColorInputIsDisabled(disabledInput(props));
@@ -59,31 +65,31 @@ const Input = styled.input.attrs<InputType>((props) => ({
   background: #ffffff;
   border: 1px solid #d8d8d8;
   border-radius: 5px;
+  display: block;
 
-  :focus ~ .label,  /* фокус на input */
-:not(:placeholder-shown) ~ .label  /* в input есть значение */ {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-  }
-
-  :not(:placeholder-shown) ~ .label {
-    color: #808097; /* сероватый */
-  }
-  :focus ~ .label {
-    color: #dc2f55; /* красный, фокус в поле */
-  }
-`;
-// https://xhtml.ru/2021/html/how-to-create-fancy-jumping-text-input-labels/
+:focus {
+  border-color: black;
+}
+:invalid {
+  border-color: red;
+}
+`
 const Label = styled.label.attrs({
-  className: "label",
+  className: "form-label",
 })`
-  transition: transform 200ms, color 200ms;
+  display: block;
+
 `;
 
-type InputType = {
-  disabled?: boolean;
-  value?: string;
-  isLoading?: boolean;
-};
+const InputWrapper= styled.div.attrs({
+  className: "form-group"
+})`
+margin: 1%;
+position: relative;
+
+
+`
+
 
 export const ProfilePage = () => {
   return (
@@ -91,18 +97,43 @@ export const ProfilePage = () => {
       <Header textBtn='Редактировать' titleText='Профиль пользователя' />
       <FormWrapper>
         <Form name='profile' id='profile'>
-          <Input
-            form='profile'
-            id='test'
-            name='text'
-            // value='asdf'
-            placeholder=' '
-            type='text'
-          />
-          <Label>Введите тестовый текст</Label>
-
-          <Input />
-          <Input disabled={true} />
+          
+          <InputWrapper>
+            <Label>Username</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+          <InputWrapper>
+            <Label>Username</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+          <InputWrapper>
+            <Label>Username</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+          
+          
+        
         </Form>
       </FormWrapper>
     </>
