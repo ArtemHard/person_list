@@ -1,11 +1,9 @@
-import { useState } from "react";
 import styled from "styled-components";
+import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 
 const FormWrapper = styled.div`
-  /* margin-top: 2%; */
-  /* margin-bottom: 2%; */
-  margin: 2% 0;
+  margin-bottom: 2%;
   padding: 0 4%;
   width: 100%;
 `;
@@ -21,8 +19,7 @@ const Form = styled.form.attrs({
   background: var(--colors-bg-s);
   border: 1px solid #c5c5c5;
   border-radius: var(--rad-b);
-  padding-top: 4%;
-  padding-bottom: 2%;
+  
   padding: 1% 2%;
 `;
 
@@ -82,14 +79,42 @@ const Label = styled.label.attrs({
 `;
 
 const InputWrapper= styled.div.attrs({
-  className: "form-group"
+  className: "form-group",
 })`
 margin: 1%;
 position: relative;
 
-
 `
 
+const InputComment = styled.textarea.attrs<InputType>((props) => ({
+  disabled: disabledInput(props),
+  className: 'form-control',
+
+}))<InputType>`
+  width: 100%;
+  height: 70px;
+  resize: none;
+  
+  color: ${(props) => {
+    if (!!ColorInputIsDisabled(disabledInput(props))) {
+      return ColorInputIsDisabled(disabledInput(props));
+    } else return "inherit";
+  }};
+  // TEST NEDD
+  //  ColorInputIsDisabled(disabledInput(props))
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+  display: block;
+  margin-right: 150px;
+
+:focus {
+  border-color: black;
+}
+:invalid {
+  border-color: red;
+}
+`
 
 export const ProfilePage = () => {
   return (
@@ -99,7 +124,7 @@ export const ProfilePage = () => {
         <Form name='profile' id='profile'>
           
           <InputWrapper>
-            <Label>Username</Label>
+            <Label>Name</Label>
               <Input
                 form='profile'
                 id='test'
@@ -109,8 +134,9 @@ export const ProfilePage = () => {
                 type='text'
               />
           </InputWrapper>
+
           <InputWrapper>
-            <Label>Username</Label>
+            <Label>User name</Label>
               <Input
                 form='profile'
                 id='test'
@@ -120,8 +146,9 @@ export const ProfilePage = () => {
                 type='text'
               />
           </InputWrapper>
+
           <InputWrapper>
-            <Label>Username</Label>
+            <Label>E-mail</Label>
               <Input
                 form='profile'
                 id='test'
@@ -131,11 +158,94 @@ export const ProfilePage = () => {
                 type='text'
               />
           </InputWrapper>
+
+          <InputWrapper>
+            <Label>Street</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+
+          <InputWrapper>
+            <Label>City</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+
+          <InputWrapper>
+            <Label>Zip code</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+
+          <InputWrapper>
+            <Label>Phone</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+
+          <InputWrapper>
+            <Label>Website</Label>
+              <Input
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                placeholder=' '
+                type='text'
+              />
+          </InputWrapper>
+
+          <InputWrapper>
+            <Label>Comment</Label>
+              <InputComment
+                form='profile'
+                id='test'
+                name='text'
+                // value='asdf'
+                // placeholder=' '
+              />
+
+          </InputWrapper>
+            
+       
+       
+
+          
           
           
         
         </Form>
       </FormWrapper>
+      <div style={{ padding: '0 4%',
+  display: 'flex',
+  width: '100%',
+  justifyContent: 'flex-end',
+  alignItems: 'center'}}>
+    <Button color="white" background="#52CF4F" isLoading={false}>Отправить</Button></div>
     </>
   );
 };
