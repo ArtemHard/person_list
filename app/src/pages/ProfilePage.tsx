@@ -44,7 +44,7 @@ export const ProfilePage = () => {
   return (
     <>
       <Header textBtn='Редактировать' titleText='Профиль пользователя' />
-      <ProfileForm isLoading={isLoading}/>
+      <ProfileForm isLoading={isLoading} userData={data}/>
     </>
   );
 };

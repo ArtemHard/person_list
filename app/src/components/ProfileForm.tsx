@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { User } from "../redux/reducers/types/personsTypes";
 import { Button } from "./Button";
 
 const FormWrapper = styled.div`
@@ -111,10 +112,12 @@ const InputComment = styled.textarea.attrs<InputType>((props) => ({
   }
 `;
 
-interface ProfileFormPropsType {
+type UserDataType = User | undefined
+type ProfileFormTypeProps = {
     isLoading: boolean
 }
-const ProfileForm = ({isLoading} : ProfileFormPropsType) => {
+
+const ProfileForm = ({isLoading, userData} : any) => {
 
     return (
 <>
