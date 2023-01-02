@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { User } from "../redux/reducers/types/personsTypes";
 
@@ -61,6 +61,7 @@ const Details = styled.span`
 
 export const Card = ({ ...props }: User) => {
   const { id, name, username, company, address } = props;
+
   return (
     <CardWrapper>
       <InfoLeftContainer>
@@ -82,7 +83,7 @@ export const Card = ({ ...props }: User) => {
       </InfoLeftContainer>
       <InfoRightContainer>
         <Details>
-          <a href='/'>Подробнее</a>
+          <Link to={`/user/${id}`}>Подробнее</Link>
         </Details>
       </InfoRightContainer>
     </CardWrapper>
