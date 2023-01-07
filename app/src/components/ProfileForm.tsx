@@ -1,4 +1,8 @@
+import { log } from "console";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { useGetPersonQuery } from "../redux/api/usersApi";
 import { User } from "../redux/reducers/types/personsTypes";
 import { Button } from "./Button";
 
@@ -117,7 +121,58 @@ type ProfileFormTypeProps = {
     isLoading: boolean
 }
 
-const ProfileForm = ({isLoading, userData} : any) => {
+const ProfileForm = () => {
+// console.log(userData);
+const { id } = useParams(); 
+const {data, isLoading} = useGetPersonQuery(id)
+
+const [name, setName] = useState<string>('')
+const [userName, setUserName] = useState<string>('')
+const [email, setEmail] = useState<string>('')
+const [street, setStreet] = useState<string>('')
+const [city, setCity] = useState<string>('')
+const [zipCode, setZipCode] = useState<string>('')
+const [phone, setPhone] = useState<string>('')
+const [website, setWebsite] = useState<string>('')
+// const [ comment, setComment] = useState<string>()
+
+useEffect(() => {
+  if (typeof data !== 'undefined') {
+    setName(data.name)
+    setUserName(data.username)
+    setEmail(data.email)
+    setStreet(data.address.street)
+    setCity(data.address.city)
+    setPhone(data.phone)
+    setWebsite(data.website)
+    // setComment()
+  }
+}, [data] )
+
+const changeNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setName(e.target.value)
+}
+const changeUserNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setUserName(e.target.value)
+}
+const changeEmailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setEmail(e.target.value)
+}
+const changeStreetHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setStreet(e.target.value)
+}
+const changeCityHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setCity(e.target.value)
+}
+const changePhoneHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setPhone(e.target.value)
+}
+const changeWebsiteHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setWebsite(e.target.value)
+}
+const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setZipCode(e.target.value)
+}
 
     return (
 <>
@@ -129,10 +184,10 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value={name}
+            value={name}
             placeholder=" "
             type="text"
-            // onChange={changeName}
+            onChange={changeNameHandler}
             key="name"
           />
         </InputWrapper>
@@ -143,7 +198,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={userName}
+            onChange={changeUserNameHandler}
             placeholder=" "
             type="text"
           />
@@ -155,7 +211,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={email}
+            onChange={changeEmailHandler}
             placeholder=" "
             type="text"
           />
@@ -167,7 +224,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={street}
+            onChange={changeStreetHandler}
             placeholder=" "
             type="text"
           />
@@ -179,7 +237,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={city}
+            onChange={changeCityHandler}
             placeholder=" "
             type="text"
           />
@@ -191,7 +250,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={zipCode}
+            onChange={changeZipCodeHandler}
             placeholder=" "
             type="text"
           />
@@ -203,7 +263,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={phone}
+            onChange={changePhoneHandler}
             placeholder=" "
             type="text"
           />
@@ -215,7 +276,8 @@ const ProfileForm = ({isLoading, userData} : any) => {
             form="profile"
             id="test"
             name="text"
-            // value='asdf'
+            value={website}
+            onChange={changeWebsiteHandler}
             placeholder=" "
             type="text"
           />

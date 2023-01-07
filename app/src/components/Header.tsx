@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useGetUsersQuery } from "../redux/api/usersApi";
 import { Button } from "./Button";
@@ -35,11 +36,13 @@ type HeaderWrapperProps = {
 export const Header = ({ textBtn, titleText }: HeaderPropsType) => {
   const { isLoading } = useGetUsersQuery();
 
+  
+
   return (
     <HeaderWrapper isBtn={!!textBtn}>
       <RightTitle>{titleText || "Список пользователей"}</RightTitle>
       {!!textBtn && (
-        <Button color='white' isLoading={isLoading}>
+        <Button color="white" isLoading={isLoading} >
           {isLoading ? "" : textBtn}
         </Button>
       )}

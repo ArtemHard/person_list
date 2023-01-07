@@ -1,3 +1,4 @@
+import { log } from "console";
 import { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -11,10 +12,10 @@ import { useGetPersonQuery } from "../redux/api/usersApi";
 
 export const ProfilePage = () => {
 
-  const { id } = useParams(); 
-  const dispatch = useAppDispatch()
+  // const { id } = useParams(); 
+  // const dispatch = useAppDispatch()
 
-  const {data, isLoading} = useGetPersonQuery(id)
+  // const {data, isLoading} = useGetPersonQuery(id)
   
   /*
   useEffect(() => {
@@ -41,10 +42,11 @@ export const ProfilePage = () => {
 
   */
 
+
   return (
     <>
       <Header textBtn='Редактировать' titleText='Профиль пользователя' />
-      <ProfileForm isLoading={isLoading} userData={data}/>
+      <ProfileForm />
     </>
   );
 };
