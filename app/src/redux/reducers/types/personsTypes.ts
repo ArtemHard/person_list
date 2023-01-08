@@ -9,6 +9,7 @@ export interface User {
   phone: string;
   website: string;
   company: Company;
+  comment?: string;
 }
 
 export interface Address {
@@ -28,4 +29,9 @@ export interface Company {
   name: string;
   catchPhrase: string;
   bs: string;
+}
+
+export interface userComment {
+  id: number
+  comment: string
 }

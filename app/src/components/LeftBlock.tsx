@@ -3,16 +3,7 @@ import styled from "styled-components";
 import { useAppDispatch } from "../hooks/hooks";
 import { filtredByCity, filtredByCompany } from "../redux/reducers/personsSlice";
 import { Button } from "./Button";
-/*
-type Props = {
-  children?: JSX.Element;
-};
 
-
-export const LeftBlock = ({ children }: Props) => {
-  return <div className='LeftBlock'>{children}</div>;
-};
-*/
 export const Wrapper = styled.div`
   background: var(--colors-bg-h);
   display: flex;
@@ -44,15 +35,13 @@ export const LeftBlock = () => {
   const dispatch = useAppDispatch();
 
 const [currBtn, setCurrBtn] = useState('')
-// #52CF4F
 const [cityBtnColor, setCityBtnColor] = useState('')
 const [companyBtnColor, setCompanyBtnColor] = useState('')
 
 const cityClickHandler = () => {
   dispatch(filtredByCity())
   setCurrBtn('city')
-  console.log(currBtn);
-  
+
 }
 const companyClickHandler = () => {
   dispatch(filtredByCompany())

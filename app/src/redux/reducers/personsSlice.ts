@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { Users } from "./types/personsTypes";
+import { userComment, Users } from "./types/personsTypes";
 
 // Define the initial state using that type
 const initialState: Users = [];
@@ -19,6 +19,15 @@ export const counterSlice = createSlice({
     },
     filtredByCompany: (state) => {
       state = state.sort((a, b) => a.company.name > b.company.name? 1 : -1);
+    },
+    addComment: (state, action: PayloadAction<userComment>) => {
+      const id = action.payload.id
+      const comment = action.payload.comment
+      return state.forEach(user => {
+        if (user.id === id) {
+          user.comment = comment
+        }
+      } )
     }
   },
 });
