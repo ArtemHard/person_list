@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 type InputColorType = {
@@ -5,10 +6,12 @@ type InputColorType = {
   color?: string;
   isLoading?: boolean;
   height?: string;
+  onClick?: any
 };
 
 export const Button = styled.button.attrs<InputColorType>((props) => ({
   disabled: props.isLoading ? props.isLoading : false,
+  onclick: props.onClick
 }))<InputColorType>`
   height: ${(props) => props.height || "24.12px"};
 

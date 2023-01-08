@@ -1,3 +1,4 @@
+import { log } from "console";
 import { useState } from "react";
 import styled from "styled-components";
 import { useGetUsersQuery } from "../redux/api/usersApi";
@@ -27,23 +28,30 @@ const RightTitle = styled.h1`
 type HeaderPropsType = {
   textBtn?: string;
   titleText?: string;
+  edit?: boolean
+  setEdit?: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 type HeaderWrapperProps = {
   isBtn?: boolean;
 };
 
-export const Header = ({ textBtn, titleText }: HeaderPropsType) => {
+export const Header = (props: HeaderPropsType) => {
   const { isLoading } = useGetUsersQuery();
-
-  
+  // console.log(props.setEdit);
+  const changeDisabled = props.setEdit ? props.setEdit : null
+  const editClickHandler = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault()
+    if (changeDisabled !== null)
+    changeDisabled(!props.edit)
+  }
 
   return (
-    <HeaderWrapper isBtn={!!textBtn}>
-      <RightTitle>{titleText || "Список пользователей"}</RightTitle>
-      {!!textBtn && (
-        <Button color="white" isLoading={isLoading} >
-          {isLoading ? "" : textBtn}
+    <HeaderWrapper isBtn={!!props.textBtn}>
+      <RightTitle>{props.titleText || "Список пользователей"}</RightTitle>
+      {!!props.textBtn && (
+        <Button color="white" isLoading={isLoading} onClick={editClickHandler}>
+          {isLoading ? "" : props.textBtn}
         </Button>
       )}
     </HeaderWrapper>

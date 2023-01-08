@@ -1,5 +1,4 @@
-import { log } from "console";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useGetPersonQuery } from "../redux/api/usersApi";
@@ -118,10 +117,10 @@ const InputComment = styled.textarea.attrs<InputType>((props) => ({
 
 type UserDataType = User | undefined
 type ProfileFormTypeProps = {
-    isLoading: boolean
+    edit: boolean
 }
 
-const ProfileForm = () => {
+const ProfileForm:FC<ProfileFormTypeProps> = (props) => {
 // console.log(userData);
 const { id } = useParams(); 
 const {data, isLoading} = useGetPersonQuery(id)
@@ -145,6 +144,7 @@ useEffect(() => {
     setCity(data.address.city)
     setPhone(data.phone)
     setWebsite(data.website)
+    setZipCode(data.address.zipcode)
     // setComment()
   }
 }, [data] )
@@ -177,10 +177,11 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     return (
 <>
     <FormWrapper>
-      <Form name="profile" id="profile">
+      <Form name="profile" id="profile" >
         <InputWrapper>
           <Label>Name</Label>
           <Input
+            disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -195,6 +196,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>User name</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -208,6 +210,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>E-mail</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -221,6 +224,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>Street</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -234,6 +238,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>City</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -247,6 +252,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>Zip code</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -260,6 +266,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>Phone</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"
@@ -273,6 +280,7 @@ const changeZipCodeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         <InputWrapper>
           <Label>Website</Label>
           <Input
+          disabled={props.edit}
             form="profile"
             id="test"
             name="text"

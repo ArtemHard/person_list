@@ -12,6 +12,10 @@ import { useGetPersonQuery } from "../redux/api/usersApi";
 
 export const ProfilePage = () => {
 
+  const [edit, setEdit] = useState<boolean>(true);
+
+  console.log(edit);
+  
   // const { id } = useParams(); 
   // const dispatch = useAppDispatch()
 
@@ -45,8 +49,8 @@ export const ProfilePage = () => {
 
   return (
     <>
-      <Header textBtn='Редактировать' titleText='Профиль пользователя' />
-      <ProfileForm />
+      <Header textBtn='Редактировать' titleText='Профиль пользователя' setEdit={setEdit} edit={edit}/>
+      <ProfileForm edit={edit} />
     </>
   );
 };

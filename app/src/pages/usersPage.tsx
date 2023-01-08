@@ -8,7 +8,6 @@ import { addUsers } from "../redux/reducers/personsSlice";
 export const UsersPage = () => {
   const { data, error, isLoading } = useGetUsersQuery();
   const persons = useAppSelector((state) => state.persons);
-  console.log(persons);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
